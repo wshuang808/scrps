@@ -1,6 +1,6 @@
 var harvester = require('harvester');
 var builder = require('builder');
-var attacker = require('attack');
+var attacker = require('attacker');
 for (var name in Game.creeps)
 {
     var creep = Game.creeps[name];
