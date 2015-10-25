@@ -1,7 +1,7 @@
 var harvester = require('harvester');
 var builder = require('builder');
 var attacker = require('attacker');
-module.exports = new function (creep) {
+module.exports = function (creep) {
     if (creep.memory.role == 'harvester')
     {
         harvester(creep);

@@ -1,20 +1,21 @@
 var config = require('config')
-module.exports = new function (spawn) {
+module.exports = function (spawn) {
     // spawn creeps if necessary
     if (!spawn.spawning) {
         // count number of creeps by role
         var counter = {}
         for (var name in Game.creeps) {
-            var creep = Game.creeps.name;
+            var creep = Game.creeps[name];
             var role = creep.memory.role;
             counter.role = (counter.role || 0) + 1;
         }
 
         // spawn
-        for (var creepConfig in config.creep) {
+        for (var key in config.creep) {
+            var creepConfig = config.creep[key];
             var role = creepConfig.role;
             var maxNum = creepConfig.maxNum;
-            var currentTotal = counter.role;
+            var currentTotal = counter.role || 0;
             if (currentTotal < maxNum) {
                 var result = spawn.createCreep(
                     creepConfig.body,
